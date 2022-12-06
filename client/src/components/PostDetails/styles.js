@@ -1,3 +1,4 @@
+import { Hidden } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 export default makeStyles((theme) => ({
@@ -31,6 +32,15 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
     },
+  },
+
+  recommendedPostMessage: {
+    display: "-webkit-box",
+    boxOrient: "vertical",
+    lineClamp: 2,
+    wordBreak: "break-all",
+    overflow: "hidden",
+    width: "200px",
   },
   loadingPaper: {
     display: "flex",

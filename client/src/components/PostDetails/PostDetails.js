@@ -46,7 +46,7 @@ const PostDetails = () => {
     );
 
     return (
-      <Paper style={{ padding: "20px", borderRadius: "15px" }} elevation={6}>
+      <Paper style={{ padding: "20px", borderRadius: "15px" }}>
         <div className={classes.card}>
           <div className={classes.section}>
             <Typography variant="h3" component="h2">
@@ -108,7 +108,11 @@ const PostDetails = () => {
                     <Typography gutterBottom variant="subtitle2">
                       {name}
                     </Typography>
-                    <Typography gutterBottom variant="subtitle2">
+                    <Typography
+                      gutterBottom
+                      variant="subtitle2"
+                      className={classes.recommendedPostMessage}
+                    >
                       {message}
                     </Typography>
                     <Typography gutterBottom variant="subtitle1">

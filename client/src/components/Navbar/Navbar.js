@@ -10,8 +10,6 @@ import {
 
 import { Link } from "react-router-dom";
 import useStyles from "./styles";
-import memoriesLogo from "../../images/memories-Logo.png";
-import memoriesText from "../../images/memories-Text.png";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -53,7 +51,12 @@ const Navbar = () => {
   }, [location]);
 
   return (
-    <AppBar className={classes.appBar} position="static" color="inherit">
+    <AppBar
+      className={classes.appBar}
+      position="static"
+      color="inherit"
+      elevation={0}
+    >
       <ThemeProvider theme={theme}>
         <Link
           to="/"
@@ -80,9 +83,9 @@ const Navbar = () => {
             </Typography>
             <Button
               variant="contained"
-              className={classes.logout}
               color="secondary"
               onClick={logout}
+              size="small"
             >
               Logout
             </Button>

@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import { setLogin } from "../../slices/loginSlice";
 
-// const url = "https://console.firebase.google.com/project/test-backend-13e73/overview";
+// const url = "https://movie-project-server.onrender.com";
 const url = "http://localhost:5000";
 
 const GoogleButton = () => {

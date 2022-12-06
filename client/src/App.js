@@ -6,6 +6,7 @@ import Auth from "./components/Auth/Auth";
 import PostDetails from "./components/PostDetails/PostDetails";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import CssBaseline from "@mui/material/CssBaseline";
 
 function App() {
   const login = useSelector((state) => state.login.login);
@@ -17,8 +18,10 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Container maxWidth="xl">
-        <Navbar />
+      <CssBaseline />
+      <Navbar />
+      <Container maxWidth="xl" style={{ background: "#f2f6fc" }}>
+        {/* <Navbar /> */}
         <Routes>
           <Route path="/" element={<Navigate replace to="/posts" />} />
           <Route path="/posts" element={<Home />} />

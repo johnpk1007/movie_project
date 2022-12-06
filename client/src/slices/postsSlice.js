@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-// const url = "https://memories-project-firstpractice.herokuapp.com";
+// const url = "https://movie-project-server.onrender.com";
 const url = "http://localhost:5000";
 
 export const apiSlice = createApi({

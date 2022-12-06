@@ -44,6 +44,11 @@ export default makeStyles({
   },
   title: {
     padding: "0 16px",
+    display: "-webkit-box",
+    boxOrient: "vertical",
+    lineClamp: 1,
+    wordBreak: "break-all",
+    overflow: "hidden",
   },
   cardActions: {
     padding: "0 16px 8px 16px",
@@ -53,5 +58,12 @@ export default makeStyles({
   cardAction: {
     display: "block",
     textAlign: "initial",
+  },
+  PostMessage: {
+    display: "-webkit-box",
+    boxOrient: "vertical",
+    lineClamp: 3,
+    wordBreak: "break-all",
+    overflow: "hidden",
   },
 });
