@@ -5,6 +5,8 @@ import authReducer from "./slices/authSlice";
 import postShareReducer from "./slices/postShare";
 import postPageReducer from "./slices/postPage";
 import loginReducer from "./slices/loginSlice";
+import commentsReducer from "./slices/commentsSlice";
+import accessTokenReducer from "./slices/accessTokenSlice";
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +16,8 @@ export const store = configureStore({
     postShare: postShareReducer,
     postPage: postPageReducer,
     login: loginReducer,
+    comments: commentsReducer,
+    accessToken: accessTokenReducer,
   },
   devTools: {
     actionSanitizer: (action) =>

@@ -26,16 +26,16 @@ const Form = () => {
   });
 
   const id = useSelector((state) => state.postUpdate.id);
+  const loginChange = useSelector((state) => state.login.login);
   const { data: post } = useGetPostQuery({ id }, { skip: !id });
   useEffect(() => {
     if (id && post) setPostData(post);
   }, [id, post]);
 
-  //change form after logout
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")));
-  }, [location]);
+  }, [location, loginChange]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -130,15 +130,6 @@ const Form = () => {
         >
           Submit
         </Button>
-        {/* <Button
-          variant="contained"
-          color="secondary"
-          size="small"
-          onClick={() => clear()}
-          fullWidth
-        >
-          Clear
-        </Button> */}
       </form>
     </Paper>
   );

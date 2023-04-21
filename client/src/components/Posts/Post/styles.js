@@ -1,11 +1,20 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-export default makeStyles({
+export default makeStyles((theme) => ({
   media: {
-    height: 0,
-    paddingTop: "56.25%",
+    height: 200,
+    // paddingTop: "56.25%",
     backgroundColor: "rgba(0, 0, 0, 0.5)",
     backgroundBlendMode: "darken",
+    // [theme.breakpoints.up("md")]: {
+    //   height: 250,
+    // },
+    // [theme.breakpoints.up(700)]: {
+    //   height: 350,
+    // },
+    // [theme.breakpoints.up("md")]: {
+    //   height: 250,
+    // },
   },
   border: {
     border: "solid",
@@ -34,6 +43,17 @@ export default makeStyles({
     color: "white",
     zIndex: 1,
   },
+  overlay3: {
+    width: "100%",
+    display: "flex",
+    position: "absolute",
+    zIndex: 1,
+    top: "200px",
+    direction: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "0 16px",
+  },
   grid: {
     display: "flex",
   },
@@ -41,9 +61,10 @@ export default makeStyles({
     display: "flex",
     justifyContent: "space-between",
     margin: "20px",
+    alignItems: "center",
   },
   title: {
-    padding: "0 16px",
+    padding: "30px 16px 0",
     display: "-webkit-box",
     boxOrient: "vertical",
     lineClamp: 1,
@@ -66,4 +87,4 @@ export default makeStyles({
     wordBreak: "break-all",
     overflow: "hidden",
   },
-});
+}));

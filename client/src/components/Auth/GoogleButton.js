@@ -1,60 +1,50 @@
-import { useGoogleLogin } from "@react-oauth/google";
 import { Button } from "@material-ui/core";
 import Icon from "./icon";
 import useStyles from "./styles";
-import { useDispatch, useSelector } from "react-redux";
-import { AUTH } from "../../slices/authSlice";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import jwt_decode from "jwt-decode";
-import { setLogin } from "../../slices/loginSlice";
+import { useRef } from "react";
+
+const backend = process.env.REACT_APP_BACKEND_ADDRESS;
+const url = backend + "/users/googlesignin";
 
 // const url = "https://movie-project-server.onrender.com";
-const url = "http://localhost:5000";
 
-const GoogleButton = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const loginChange = useSelector((state) => state.login.login);
-  const googleSuccess = async (codeResponse) => {
-    const tokens = await axios.post(`${url}/auth/google`, {
-      code: codeResponse.code,
-    });
-
-    const userInfo = jwt_decode(tokens.data.id_token);
-
-    try {
-      dispatch(AUTH({ result: userInfo, token: tokens.data.id_token }));
-      dispatch(setLogin(!loginChange));
-
-      navigate(-1);
-      console.log("google login success");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const googleFailure = (err) => {
-    console.log(err);
-  };
-  const login = useGoogleLogin({
-    flow: "auth-code",
-    onSuccess: (res) => googleSuccess(res),
-    onError: (err) => googleFailure(err),
-  });
+const GoogleButton = ({ isSignup, lang, redirect }) => {
   const classes = useStyles();
+  const googleRef = useRef();
+
+  const handleGoogleLogin = () => {
+    localStorage.setItem("redirectUrl", redirect);
+    googleRef.current.click();
+  };
 
   return (
-    <Button
-      onClick={() => login()}
-      className={classes.googleButton}
-      color="primary"
-      fullWidth
-      startIcon={<Icon />}
-      variant="contained"
-    >
-      GOOGLE SIGN IN
-    </Button>
+    <>
+      <a href={url} ref={googleRef} style={{ display: "none" }}>
+        google login
+      </a>
+      <Button
+        onClick={() => handleGoogleLogin()}
+        className={classes.googleButton}
+        style={{
+          backgroundColor: "#4285f4",
+          color: "white",
+          height: 36.5,
+          fontSize: lang === "en" ? "12px" : null,
+          // width: "47%",
+        }}
+        fullWidth
+        startIcon={<Icon />}
+        variant="contained"
+      >
+        {lang === "en"
+          ? isSignup
+            ? "Google Sign Up"
+            : "Google Log In"
+          : isSignup
+          ? "구글 회원가입"
+          : "구글 로그인"}
+      </Button>
+    </>
   );
 };
 

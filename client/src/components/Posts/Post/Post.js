@@ -6,6 +6,7 @@ import {
   Button,
   Typography,
   CardActionArea,
+  collapseClasses,
 } from "@mui/material";
 
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
@@ -14,7 +15,10 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import useStyles from "./styles";
 import moment from "moment";
-import { useDispatch } from "react-redux";
+
+import "moment/locale/ko";
+
+import { useDispatch, useSelector } from "react-redux";
 import { setCurrentId } from "../../../slices/postUpdateSlice";
 import {
   useDeletePostMutation,
@@ -31,7 +35,7 @@ import {
   DialogTitle,
 } from "@mui/material";
 
-const Post = ({ post }) => {
+const Post = ({ post, lang }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const location = useLocation();
@@ -57,66 +61,80 @@ const Post = ({ post }) => {
     deletePost(post);
   };
 
+  const loginChange = useSelector((state) => state.login.login);
+
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("profile")));
-  }, [location]);
+  }, [location, loginChange]);
 
   const handleLikes = () => {
-    likePost(post);
-    if (
-      post?.likes?.find(
-        (like) => like === (user?.result?.sub || user?.result?._id)
-      )
-    ) {
-      setLikes(
-        post?.likes?.filter(
-          (like) => like !== (user?.result?.sub || user?.result?._id)
-        )
-      );
+    likePost({ _id: post._id, creatorId: user?.result?.id });
+
+    const include = likes.includes(user?.result?.id);
+    if (include) {
+      setLikes(likes.filter((like) => like !== user.result.id));
     } else {
-      setLikes([...post.likes, user?.result?.sub || user?.result?._id]);
+      setLikes([...likes, user.result.id]);
     }
   };
 
   const Likes = () => {
-    if (likes.length > 0) {
-      return likes.find(
-        (like) => like === (user?.result?.sub || user?.result?._id)
-      ) ? (
+    if (likes.includes(user?.result?.id)) {
+      return (
         <>
           <ThumbUpAltIcon fontSize="small" />
           &nbsp;
-          {post.likes.length > 2
-            ? `You and ${likes.length - 1} others`
-            : `${likes.length} like${likes.length > 1 ? "s" : ""}`}
+          {likes.length ? likes.length : " "}{" "}
+          {lang === "en" ? (likes.length === 1 ? "Like" : "Likes") : "좋아요"}
         </>
-      ) : (
+      );
+    } else {
+      return (
         <>
           <ThumbUpAltOutlinedIcon fontSize="small" />
-          &nbsp;{likes.length} {likes.length === 1 ? "Like" : "Likes"}
+          &nbsp;
+          {likes.length ? likes.length : " "}{" "}
+          {lang === "en" ? (likes.length === 1 ? "Like" : "Likes") : "좋아요"}
         </>
       );
     }
-
-    return (
-      <>
-        <ThumbUpAltOutlinedIcon fontSize="small" />
-        &nbsp;Like
-      </>
-    );
   };
 
-  const openPost = () => {
-    navigate(`/posts/${post._id}`);
+  const openPost = (event, value) => {
+    navigate(`/${lang}/posts/${post._id}`);
   };
+
+  const genreOptionsEn = [
+    { label: "Action", info: "action" },
+    { label: "Adventure", info: "adventure" },
+    { label: "Drama", info: "drama" },
+    { label: "Fantasy", info: "fantasy" },
+    { label: "Horror", info: "horror" },
+    { label: "Mystery", info: "mystery" },
+    { label: "Musical", info: "musical" },
+    { label: "Science Fiction", info: "science fiction" },
+    { label: "Sports", info: "sports" },
+    { label: "Thriller", info: "thriller" },
+    { label: "War", info: "war" },
+  ];
+
+  const genreOptionsKo = [
+    { label: "액션", info: "action" },
+    { label: "어드벤쳐", info: "adventure" },
+    { label: "드라마", info: "drama" },
+    { label: "판타지", info: "fantasy" },
+    { label: "공포", info: "horror" },
+    { label: "미스터리", info: "mystery" },
+    { label: "뮤지컬", info: "musical" },
+    { label: "공상과학", info: "science fiction" },
+    { label: "스포츠", info: "sports" },
+    { label: "스릴러", info: "thriller" },
+    { label: "전쟁", info: "war" },
+  ];
 
   return (
     <div>
-      <Card
-        className={classes.card}
-        // raised
-        // elevation={6}
-      >
+      <Card className={classes.card} elevation={0}>
         <CardActionArea className={classes.cardAction} onClick={openPost}>
           <CardMedia
             className={classes.media}
@@ -129,17 +147,12 @@ const Post = ({ post }) => {
           <div className={classes.overlay}>
             <Typography variant="h6">{post.name}</Typography>
             <Typography variant="body2">
-              {moment(post.createdAt).fromNow()}
+              {moment(post.createdAt)
+                .locale(lang === "en" ? "en" : "ko")
+                .fromNow()}
             </Typography>
           </div>
 
-          {post.tags[0] !== "" && (
-            <div className={classes.details}>
-              <Typography variant="body2" color="textSecondary">
-                {post.tags.map((tag) => `#${tag} `)}
-              </Typography>
-            </div>
-          )}
           <Typography className={classes.title} variant="h5" gutterBottom>
             {post.title}
           </Typography>
@@ -155,22 +168,14 @@ const Post = ({ post }) => {
           </CardContent>
         </CardActionArea>
 
-        {(user?.result?.sub === post?.creator ||
-          user?.result?._id === post?.creator) && (
-          <div className={classes.overlay2}>
-            <Button
-              style={{ color: "white" }}
-              size="small"
-              onClick={() => {
-                dispatch(setCurrentId(post._id));
-              }}
-            >
-              <MoreHorizIcon fontSize="default" />
-            </Button>
-          </div>
-        )}
+        <div className={classes.overlay3}>
+          <Typography variant="body2" color="primary">
+            #
+            {lang === "en"
+              ? genreOptionsEn.find((genre) => genre.info === post.tags)?.label
+              : genreOptionsKo.find((genre) => genre.info === post.tags)?.label}
+          </Typography>
 
-        <CardActions className={classes.cardActions}>
           <Button
             size="small"
             color="primary"
@@ -179,24 +184,7 @@ const Post = ({ post }) => {
           >
             <Likes />
           </Button>
-          {(user?.result?.sub === post?.creator ||
-            user?.result?._id === post?.creator) && (
-            <Button
-              size="small"
-              color="primary"
-              type="button"
-              onClick={
-                // () => {
-                handleClickOpen
-                // deletePost(post);
-                // }
-              }
-            >
-              <DeleteIcon fontSize="small" />
-              Delete
-            </Button>
-          )}
-        </CardActions>
+        </div>
       </Card>
       <Dialog
         open={open}
@@ -205,7 +193,7 @@ const Post = ({ post }) => {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"Are you usre you want to delete your review??"}
+          {"Are you usre you want to delete your review?"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
