@@ -6,7 +6,7 @@ import { setLogin } from "./loginSlice";
 import Cookies from "js-cookie";
 
 // const url = "https://movie-project-server.onrender.com";
-const url = "http://localhost:5000";
+const url = process.env.REACT_APP_BACKEND_ADDRESS;
 
 const baseQuery = fetchBaseQuery({
   baseUrl: url,
