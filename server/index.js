@@ -13,7 +13,10 @@ import index from "./passport/index.js";
 const app = express();
 dotenv.config();
 
-const whitelist = [process.env.FRONTEND_ADDRESS];
+// const whitelist = [process.env.FRONTEND_ADDRESS];
+const whitelist = [
+  "https://644631445860290eb7ad17a2--gregarious-semifreddo-8e2458.netlify.app",
+];
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
