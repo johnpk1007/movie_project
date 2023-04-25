@@ -22,6 +22,7 @@ router.get("/naversignin", passport.authenticate("naver"));
 router.get("/navercallback", passport.authenticate("naver"), (req, res) => {
   {
     const newUrl = new URL(url);
+    console.log("newUrl:", newUrl);
     newUrl.searchParams.append("name", req.user.name);
     newUrl.searchParams.append("id", req.user.id);
     newUrl.searchParams.append("src", req.user.src);

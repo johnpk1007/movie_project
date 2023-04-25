@@ -56,9 +56,7 @@ const PostDetails = () => {
   const [likes, setLikes] = useState([]);
 
   useEffect(() => {
-    console.log("useEffect worked!");
     if (getData.isSuccess && getData.data.tags.length) {
-      console.log("getData.data.tags:", getData.data.tags);
       searchTrigger({ search: "none", tags: getData.data.tags });
     }
 

@@ -14,7 +14,7 @@ const app = express();
 dotenv.config();
 
 const whitelist = [process.env.FRONTEND_ADDRESS];
-// const whitelist = ["https://filmview.netlify.app"];
+
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {

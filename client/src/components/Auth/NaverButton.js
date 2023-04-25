@@ -2,11 +2,9 @@ import { Button } from "@material-ui/core";
 import { useRef } from "react";
 
 import NaverIcon from "./NaverIcon";
-const id = process.env.REACT_APP_CLIENT_KEY;
-console.log("id:", id);
+
 const backend = process.env.REACT_APP_BACKEND_ADDRESS;
 const url = backend + "/users/naversignin";
-console.log("NaverBackend:", backend);
 
 const NaverButton = ({ isSignup, lang, redirect }) => {
   const naverRef = useRef();

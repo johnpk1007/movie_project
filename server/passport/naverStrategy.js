@@ -19,13 +19,17 @@ export default () => {
 
       async (accessToken, refreshToken, profile, done) => {
         console.log("accessToken:", accessToken);
+        console.log("refreshToken:", refreshToken);
+        console.log("profile:", profile);
         try {
           const exUser = await User.findOne({
             id: profile.id,
             src: "naver",
           });
+          console.log("exUser:", exUser);
           if (exUser) {
             await redisClient.set(profile.id, refreshToken);
+            console.lo("we are done");
             done(null, exUser);
           } else {
             const newUser = await User.create({

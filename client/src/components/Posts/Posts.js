@@ -175,7 +175,6 @@ const Posts = () => {
         </Paper>
       );
     } else if (getResult.isSuccess) {
-      console.log("getResult is:", getResult);
       if (getResult.isFetching === true) {
         if (getResult.currentData !== getResult.data) {
           return (

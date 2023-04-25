@@ -34,10 +34,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { apiSlice } from "../../slices/postsSlice";
-import reviewIcon from "../../images/reviewIcon.png";
-import reviewIcon2 from "../../images/reviewIcon2.png";
-import reviewIcon3 from "../../images/reviewIcon3.png";
-import reviewIcon4 from "../../images/reviewIcon4.png";
+
 import reviewIcon5 from "../../images/reviewIcon5.png";
 
 const Navbar = () => {
