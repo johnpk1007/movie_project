@@ -9,6 +9,8 @@ import emailRoutes from "./routes/email.js";
 import session from "express-session";
 import passport from "passport";
 import index from "./passport/index.js";
+import RedisStore from "connect-redis";
+import redisClient from "./models/redis.js";
 
 const app = express();
 dotenv.config();
@@ -26,10 +28,25 @@ const corsOptions = {
   credentials: true,
 };
 
+let redisStore = new RedisStore({
+  client: redisClient,
+  prefix: "filmView",
+});
+
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
 app.use(cookieParser("test"));
-app.use(session({ secret: "test", resave: false, saveUninitialized: false }));
+
+// app.use(session({ secret: "test", resave: false, saveUninitialized: false }));
+app.use(
+  session({
+    store: redisStore,
+    resave: false,
+    saveUninitialized: false,
+    secret: "real secret",
+  })
+);
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors(corsOptions));
