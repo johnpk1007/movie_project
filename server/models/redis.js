@@ -9,7 +9,9 @@ const redisEndpoint = process.env.REDIS_ENDPOINT;
 
 const redisClient = redis.createClient({
   url: `redis://${redisUsername}:${redisPassword}@${redisEndpoint}/0`,
-  pingInterval: 1000,
+  socket: {
+    connectTimeout: 100000,
+  },
 });
 
 redisClient
