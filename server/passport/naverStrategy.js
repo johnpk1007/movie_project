@@ -43,6 +43,7 @@ export default () => {
             done(null, newUser);
           }
         } catch (error) {
+          console.log("err:", err);
           done(err);
         }
       }
