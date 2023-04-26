@@ -13,11 +13,21 @@ const redisEndpoint = process.env.REDIS_ENDPOINT;
 //   legacymode: true,
 // });
 
+// const redisClient = createClient({
+//   url: `redis://${redisUsername}:${redisPassword}@${redisEndpoint}/0`,
+//   socket: {
+//     connectTimeout: 50000,
+//   },
+// });
+
 const redisClient = createClient({
-  url: `redis://${redisUsername}:${redisPassword}@${redisEndpoint}/0`,
   socket: {
+    host: "redis-19603.c302.asia-northeast1-1.gce.cloud.redislabs.com",
+    port: 19603,
     connectTimeout: 50000,
   },
+  username: redisUsername,
+  password: redisPassword,
 });
 
 // redisClient
