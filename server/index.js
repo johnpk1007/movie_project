@@ -39,7 +39,7 @@ let redisStore = new RedisStore({
 
 app.use(express.json({ limit: "30mb", extended: true }));
 app.use(express.urlencoded({ limit: "30mb", extended: true }));
-app.use(cookieParser("test"));
+app.use(cookieParser());
 
 // app.use(session({ secret: "test", resave: false, saveUninitialized: false }));
 app.use(
@@ -48,6 +48,12 @@ app.use(
     resave: false,
     saveUninitialized: false,
     secret: "real secret",
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 365 * 10,
+      httpOnly: true,
+      sameSite: "none",
+      secure: true,
+    },
   })
 );
 
