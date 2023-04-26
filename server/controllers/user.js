@@ -37,7 +37,14 @@ export const signin = async (
         src: user.src,
         email: user.email,
       };
-      return res.status(200).json({ result: fixUser });
+      return res
+        .cookie({
+          httpOnly: true,
+          secure: true,
+          sameSite: "None",
+        })
+        .status(200)
+        .json({ result: fixUser });
     });
   })(
     req,
