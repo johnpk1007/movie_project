@@ -15,7 +15,9 @@ const redisEndpoint = process.env.REDIS_ENDPOINT;
 
 const redisClient = createClient({
   url: `redis://${redisUsername}:${redisPassword}@${redisEndpoint}/0`,
-  disableOfflineQueue: true,
+  socket: {
+    connectTimeout: 50000,
+  },
 });
 
 // redisClient
