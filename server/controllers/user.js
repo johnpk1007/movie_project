@@ -97,7 +97,8 @@ export const logout = async (req, res) => {
       return res.status(404);
     }
   });
-  req.session.destroy();
+  const destroy = req.session.destroy();
+  console.log("destroy result:", destroy);
   res.status(200).json({ message: "logout complete!" });
 };
 

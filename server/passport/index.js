@@ -7,7 +7,8 @@ import verify from "./verifyStrategy.js";
 
 export default () => {
   passport.serializeUser((user, done) => {
-    done(null, user._id.toString());
+    console.log("user:", user);
+    done(null, user._id);
   });
   passport.deserializeUser((_id, done) => {
     User.findOne({ _id })
