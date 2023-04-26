@@ -26,7 +26,7 @@ export const signin = async (
       console.error(user);
       return res.status(404).json(info);
     }
-    req.login(user, (loginError) => {
+    return req.login(user, (loginError) => {
       if (loginError) {
         console.error("loginError:", loginError);
         return res.status(400);
