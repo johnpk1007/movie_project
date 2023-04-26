@@ -32,6 +32,8 @@ const corsOptions = {
 
 let redisStore = new RedisStore({
   client: redisClient,
+  host: "redis-19603.c302.asia-northeast1-1.gce.cloud.redislabs.com",
+  port: 19603,
   prefix: "filmView",
 });
 

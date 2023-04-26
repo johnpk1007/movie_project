@@ -117,9 +117,6 @@ export const getPosts = async (req, res) => {
 export const getPost = async (req, res) => {
   try {
     const { id } = req.params;
-    await redisClient.set("id", id);
-    const redisid = await redisClient.get("id");
-    console.log("redisid:", redisid);
     const postMessage = await PostMessage.findById(id);
     res.status(200).json(postMessage);
   } catch (error) {
