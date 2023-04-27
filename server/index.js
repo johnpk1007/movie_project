@@ -53,7 +53,7 @@ app.use(
       httpOnly: true,
       sameSite: "none",
       secure: true,
-      domain: "i have no idea",
+      domain: ".example.com",
     },
   })
 );
