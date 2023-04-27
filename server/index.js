@@ -53,7 +53,7 @@ app.use(
       httpOnly: true,
       sameSite: "none",
       secure: true,
-      domain: ".example.com",
+      domain: ".onrender.com",
     },
   })
 );
