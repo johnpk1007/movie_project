@@ -48,13 +48,12 @@ app.use(
     resave: false,
     saveUninitialized: false,
     secret: "real secret",
-    cookie: {
-      maxAge: 1000 * 60 * 60 * 24 * 365 * 10,
-      httpOnly: true,
-      sameSite: "none",
-      secure: true,
-      domain: ".onrender.com",
-    },
+    // cookie: {
+    //   maxAge: 1000 * 60 * 60 * 24 * 365 * 10,
+    //   httpOnly: true,
+    //   sameSite: "none",
+    //   secure: true,
+    // },
   })
 );
 
