@@ -53,7 +53,7 @@ app.use(
       httpOnly: true,
       sameSite: "none",
       secure: true,
-      domain: "movie-project-server.onrender.com",
+      domain: "i have no idea",
     },
   })
 );
