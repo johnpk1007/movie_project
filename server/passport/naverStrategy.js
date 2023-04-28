@@ -29,7 +29,7 @@ export default () => {
           console.log("exUser:", exUser);
           if (exUser) {
             await redisClient.set(profile.id, refreshToken);
-            console.lo("we are done");
+            console.log("we are done");
             done(null, exUser);
           } else {
             const newUser = await User.create({

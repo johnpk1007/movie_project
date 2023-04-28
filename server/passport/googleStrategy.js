@@ -24,6 +24,8 @@ export default () => {
             src: "google",
           });
           if (exUser) {
+            await redisClient.set(profile.id, refreshToken);
+            console.log("we are done");
             done(null, exUser);
           } else {
             const newUser = await User.create({
@@ -33,11 +35,6 @@ export default () => {
               email_verified: true,
               src: "google",
             });
-
-            console.log("accessToken:", accessToken);
-
-            console.log("refreshToken:", refreshToken);
-
             await redisClient.set(profile.id, refreshToken);
             done(null, newUser);
           }
