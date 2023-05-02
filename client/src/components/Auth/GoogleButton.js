@@ -5,8 +5,8 @@ import { useRef } from "react";
 
 const backend = process.env.REACT_APP_BACKEND_ADDRESS;
 const url = backend + "/users/googlesignin";
-
-// const url = "https://movie-project-server.onrender.com";
+console.log("backend:", backend);
+console.log("url:", url);
 
 const GoogleButton = ({ isSignup, lang, redirect }) => {
   const classes = useStyles();

@@ -24,6 +24,7 @@ export default () => {
             src: "google",
           });
           if (exUser) {
+            console.log("profile.id:", profile.id);
             await redisClient.set(profile.id, refreshToken);
             console.log("we are done");
             done(null, exUser);

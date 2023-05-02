@@ -6,6 +6,7 @@ import passport from "passport";
 import { naverDeleteAccount } from "./naverDeleteAccount.js";
 import { googleDeleteAccount } from "./googleDeleteAccount.js";
 import { localDeleteAccount } from "./localDeleteAccount.js";
+import redisClient from "../models/redis.js";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -93,6 +94,8 @@ export const signup = async (req, res) => {
 };
 
 export const logout = async (req, res) => {
+  const id = req.user.id;
+  await redisClient.del(id);
   req.logout(function (err) {
     if (err) {
       return res.status(404);
