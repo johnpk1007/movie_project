@@ -9,8 +9,8 @@ dotenv.config();
 export const sendDeleteEmail = async (req, res) => {
   const { email, creatorId, src, lang } = req.body;
 
-  const backend = process.env.BACKEND_ADDRESS;
-  const url = backend + "/deletedone";
+  const frontend = process.env.FRONTEND_ADDRESS;
+  const url = frontend + "/deletedone";
 
   const newUrl = new URL(url);
   newUrl.searchParams.append("creatorId", creatorId);
