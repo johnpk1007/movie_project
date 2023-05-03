@@ -40,6 +40,7 @@ const DeleteDone = () => {
   }, [deleteAccountResult]);
 
   useEffect(() => {
+    console.log("logoutResult:", logoutResult);
     if (logoutResult.isSuccess) {
       navigate("/");
     }
