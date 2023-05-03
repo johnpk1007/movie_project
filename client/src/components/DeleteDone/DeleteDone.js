@@ -29,14 +29,16 @@ const DeleteDone = () => {
         creatorId: creatorIdFromUrl,
         src: src,
       });
-
-      logout();
+      // logout();
     }
   }, [creatorIdFromUrl]);
+  useEffect(() => {
+    if (deleteAccountResult) {
+      console.log("deleteAccountResult:", deleteAccountResult);
+    }
+  }, [deleteAccountResult]);
 
-  console.log("deleteAccountResult:", deleteAccountResult);
-
-  return <Navigate to="/" replace />;
+  // return <Navigate to="/" replace />;
 };
 
 export default DeleteDone;
