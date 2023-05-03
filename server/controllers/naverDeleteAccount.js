@@ -3,7 +3,9 @@ import PostMessage from "../models/postMessage.js";
 import redisClient from "../models/redis.js";
 import axios from "axios";
 
-export const naverDeleteAccount = async (id, src) => {
+// export const naverDeleteAccount = async (id, src) => {
+export const naverDeleteAccount = async (req, res) => {
+  const { creatorId: id, src } = req.body;
   const clientId = process.env.CLIENT_ID_NAVER;
   const clientSecret = process.env.CLIENT_SECRET_NAVER;
   const user = await User.findOneAndDelete({ id, src });
@@ -30,4 +32,5 @@ export const naverDeleteAccount = async (id, src) => {
     `https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=${clientId}&client_secret=${clientSecret}&access_token=${urlEncodedAccessToken}&service_provider=NAVER`
   );
   console.log(result.data);
+  res.json({ message: "User deleted successfully" });
 };

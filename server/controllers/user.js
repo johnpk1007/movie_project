@@ -95,7 +95,6 @@ export const signup = async (req, res) => {
 
 export const logout = async (req, res) => {
   console.log("req.user:", req.user);
-  console.log("req.passport", req.passport);
   const id = req.user.id;
   await redisClient.del(id);
   req.logout(function (err) {
@@ -140,13 +139,14 @@ export const deleteaccount = async (req, res) => {
     }
     if (src === "naver") {
       console.log("naverDeleteAccountModule activated");
-      naverDeleteAccount(id, src);
+      // naverDeleteAccount(id, src);
+      naverDeleteAccount(req, res);
     }
     if (src === "google") {
       console.log("googleDeleteAccountModule activated");
       googleDeleteAccount(id, src);
     }
-    res.json({ message: "User deleted successfully" });
+    // res.json({ message: "User deleted successfully" });
   } catch (error) {
     res.status(404).json({ error });
   }
