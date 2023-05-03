@@ -28,10 +28,11 @@ export default () => {
           });
           console.log("exUser:", exUser);
           if (exUser) {
+            console.log("We found exUser");
             await redisClient.set(profile.id, refreshToken);
-            console.log("we are done");
             done(null, exUser);
           } else {
+            console.log("We didn't find exUser");
             const newUser = await User.create({
               email: profile.emails[0].value,
               name: profile.displayName,
@@ -39,6 +40,7 @@ export default () => {
               email_verified: true,
               src: "naver",
             });
+            console.log("newUser:", newUser);
             await redisClient.set(profile.id, refreshToken);
             done(null, newUser);
           }
