@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useDeleteAccountMutation } from "../../slices/postsSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +7,7 @@ import { setLogin } from "../../slices/loginSlice";
 import { apiSlice } from "../../slices/postsSlice";
 
 const DeleteDone = () => {
+  const navigate = useNavigate();
   const urlParameter = new URL(window.location.href);
   const creatorIdFromUrl = urlParameter.searchParams.get("creatorId");
   const src = urlParameter.searchParams.get("src");
@@ -39,7 +40,7 @@ const DeleteDone = () => {
   }, [deleteAccountResult]);
 
   if (logoutResult.isSuccess) {
-    <Navigate to="/" replace />;
+    navigate("/");
   }
 };
 
