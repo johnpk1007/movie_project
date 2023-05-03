@@ -94,6 +94,8 @@ export const signup = async (req, res) => {
 };
 
 export const logout = async (req, res) => {
+  console.log("req.user:", req.user);
+  console.log("req.passport", req.passport);
   const id = req.user.id;
   await redisClient.del(id);
   req.logout(function (err) {
