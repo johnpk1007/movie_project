@@ -35,8 +35,8 @@ export default () => {
           } else {
             console.log("We didn't find exUser");
             const newUser = await User.create({
-              email: profile.emails[0].value,
-              name: profile.displayName,
+              email: profile.email,
+              name: profile.name,
               id: profile.id,
               email_verified: true,
               src: "naver",
