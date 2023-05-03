@@ -18,7 +18,10 @@ const router = express.Router();
 router.post("/signin", signin);
 router.post("/signup", signup);
 
-router.get("/naversignin", passport.authenticate("naver"));
+router.get(
+  "/naversignin",
+  passport.authenticate("naver", { authType: "reprompt" })
+);
 router.get("/navercallback", passport.authenticate("naver"), (req, res) => {
   {
     const newUrl = new URL(url);

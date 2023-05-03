@@ -1,6 +1,7 @@
 import User from "../models/user.js";
 import passport from "passport";
-import { Strategy as NaverStrategy } from "passport-naver";
+// import { Strategy as NaverStrategy } from "passport-naver";
+import { Strategy as NaverStrategy } from "passport-naver-v2";
 import redisClient from "../models/redis.js";
 import dotenv from "dotenv";
 dotenv.config();
