@@ -11,7 +11,7 @@ const DeleteDone = () => {
   const creatorIdFromUrl = urlParameter.searchParams.get("creatorId");
   const src = urlParameter.searchParams.get("src");
 
-  const [logoutTrigger] = apiSlice.useLazyLogoutQuery();
+  const [logoutTrigger, logoutResult] = apiSlice.useLazyLogoutQuery();
 
   const dispatch = useDispatch();
 
@@ -38,7 +38,9 @@ const DeleteDone = () => {
     }
   }, [deleteAccountResult]);
 
-  return <Navigate to="/" replace />;
+  if (logoutResult.isSuccess) {
+    <Navigate to="/" replace />;
+  }
 };
 
 export default DeleteDone;
