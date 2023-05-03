@@ -34,6 +34,7 @@ const DeleteDone = () => {
     }
   }, [creatorIdFromUrl]);
   useEffect(() => {
+    console.log("deleteAccountResult:", deleteAccountResult);
     if (deleteAccountResult.isSuccess) {
       logout();
     }
