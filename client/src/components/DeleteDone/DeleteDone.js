@@ -39,9 +39,11 @@ const DeleteDone = () => {
     }
   }, [deleteAccountResult]);
 
-  if (logoutResult.isSuccess) {
-    navigate("/");
-  }
+  useEffect(() => {
+    if (logoutResult.isSuccess) {
+      navigate("/");
+    }
+  }, [logoutResult]);
 };
 
 export default DeleteDone;
