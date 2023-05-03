@@ -17,6 +17,7 @@ export const naverDeleteAccount = async (id, src) => {
   await PostMessage.deleteMany({ creator: id });
 
   const redisRefreshToken = await redisClient.get(id);
+  console.log("redisRefreshToken:", redisRefreshToken);
   const naverAccessToken = await axios.get(
     `https://nid.naver.com/oauth2.0/token?grant_type=refresh_token&client_id=${clientId}&client_secret=${clientSecret}&refresh_token=${redisRefreshToken}`
   );
