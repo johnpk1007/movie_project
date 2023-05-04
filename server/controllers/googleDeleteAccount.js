@@ -8,7 +8,9 @@ dotenv.config();
 const backend = process.env.BACKEND_ADDRESS;
 const url = backend + "/users/googlecallback";
 
-export const googleDeleteAccount = async (id, src) => {
+// export const googleDeleteAccount = async (id, src) => {
+export const googleDeleteAccount = async (req, res) => {
+  const { creatorId: id, src } = req.body;
   const clientId = process.env.CLIENT_ID_GOOGLE;
   const clientSecret = process.env.CLIENT_SECRET_GOOGLE;
   const redirectURI = url;
@@ -40,4 +42,6 @@ export const googleDeleteAccount = async (id, src) => {
   oauth2Client.refreshAccessToken((err, tokens) => {
     oauth2Client.revokeToken(tokens.access_token);
   });
+
+  res.json({ message: "User deleted successfully" });
 };

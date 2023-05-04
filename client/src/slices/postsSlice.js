@@ -159,7 +159,7 @@ export const apiSlice = createApi({
     }),
 
     logout: builder.query({
-      query: () => "/users/logout",
+      query: (body) => `/users/logout/${body.userId}`,
     }),
 
     passwordChange: builder.mutation({

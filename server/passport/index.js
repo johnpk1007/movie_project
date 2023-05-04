@@ -11,6 +11,7 @@ export default () => {
     done(null, user._id);
   });
   passport.deserializeUser((_id, done) => {
+    console.log("deserializer activated");
     User.findOne({ _id })
       .then((user) => done(null, user))
       .catch((err) => done(err));

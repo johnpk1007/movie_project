@@ -41,14 +41,6 @@ const Navbar = () => {
   const classes = useStyles();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const theme = createTheme({
-    // typography: {
-    //   fontFamily: ["Abril Fatface", "cursive"].join(","),
-    // },
-    // typography: {
-    //   fontFamily: ["Josefin Sans", "sans-serif"].join(","),
-    //   fontWeightRegular: 400,
-    //   fontWeightLight: 300,
-    // },
     typography: {
       fontFamily: ["Oswald", "sans-serif"].join(","),
       fontWeightMedium: 500,
@@ -80,8 +72,10 @@ const Navbar = () => {
 
   const [logoutTrigger, logoutResult] = apiSlice.useLazyLogoutQuery();
 
+  const userId = user?.result?.id;
+
   const logout = () => {
-    logoutTrigger();
+    logoutTrigger({ userId });
     dispatch(LOGOUT());
     dispatch(setLogin(false));
     handleClose();

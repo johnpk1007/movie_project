@@ -1,5 +1,5 @@
 import { Navigate, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDeleteAccountMutation } from "../../slices/postsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { LOGOUT } from "../../slices/authSlice";
@@ -11,13 +11,17 @@ const DeleteDone = () => {
   const urlParameter = new URL(window.location.href);
   const creatorIdFromUrl = urlParameter.searchParams.get("creatorId");
   const src = urlParameter.searchParams.get("src");
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
   const [logoutTrigger, logoutResult] = apiSlice.useLazyLogoutQuery();
 
   const dispatch = useDispatch();
 
+  const userId = user?.result?.id;
+  const login = useSelector((state) => state.login.login);
+
   const logout = () => {
-    logoutTrigger();
+    logoutTrigger({ userId });
     dispatch(LOGOUT());
     dispatch(setLogin(false));
   };
@@ -30,12 +34,11 @@ const DeleteDone = () => {
         creatorId: creatorIdFromUrl,
         src: src,
       });
-      // logout();
     }
   }, [creatorIdFromUrl]);
   useEffect(() => {
     console.log("deleteAccountResult:", deleteAccountResult);
-    if (deleteAccountResult.isSuccess) {
+    if (deleteAccountResult.isSuccess && login) {
       logout();
     }
   }, [deleteAccountResult]);
@@ -46,6 +49,13 @@ const DeleteDone = () => {
       navigate("/");
     }
   }, [logoutResult]);
+
+  useEffect(() => {
+    console.log("deleteAccountResult:", deleteAccountResult);
+    if (deleteAccountResult.isSuccess && !login) {
+      navigate("/");
+    }
+  }, [deleteAccountResult]);
 };
 
 export default DeleteDone;

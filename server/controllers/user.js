@@ -94,8 +94,7 @@ export const signup = async (req, res) => {
 };
 
 export const logout = async (req, res) => {
-  console.log("req.user:", req.user);
-  const id = req.user.id;
+  const { id } = req.params;
   await redisClient.del(id);
   req.logout(function (err) {
     if (err) {
@@ -144,7 +143,7 @@ export const deleteaccount = async (req, res) => {
     }
     if (src === "google") {
       console.log("googleDeleteAccountModule activated");
-      googleDeleteAccount(id, src);
+      googleDeleteAccount(req, res);
     }
     // res.json({ message: "User deleted successfully" });
   } catch (error) {

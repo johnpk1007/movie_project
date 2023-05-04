@@ -62,7 +62,7 @@ router.get("/googlecallback", passport.authenticate("google"), (req, res) => {
   }
 });
 
-router.get("/logout", logout);
+router.get("/logout/:id", logout);
 router.patch("/passwordchange", passwordchange);
 router.delete("/deleteaccount", deleteaccount);
 
