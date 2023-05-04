@@ -8,6 +8,21 @@ export default makeStyles((theme) => ({
     alignItems: "center",
     padding: theme.spacing(2),
   },
+  paper2: {
+    marginTop: theme.spacing(4),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: theme.spacing(2),
+  },
+  loadingPaper: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "20px",
+    borderRadius: "15px",
+    height: "39vh",
+  },
   root: {
     "& .MuiTextField-root": {
       margin: theme.spacing(1),
