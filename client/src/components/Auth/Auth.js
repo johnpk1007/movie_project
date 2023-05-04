@@ -92,7 +92,7 @@ const Auth = () => {
       openFunction();
     } else {
       const info = await signIn(formData);
-
+      console.log("info:", info);
       if (info.error) {
         if (info.error.data.message === "User doesn't exist") {
           setNoUserError(true);
