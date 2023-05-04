@@ -41,7 +41,7 @@ const Auth = () => {
   const [passwordError2, setPasswordError2] = useState(false);
 
   const [signUp] = useSignUpMutation();
-  const [signIn] = useSignInMutation();
+  const [signIn, signInResult] = useSignInMutation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -62,6 +62,8 @@ const Auth = () => {
   const handleShowPassword2 = () => {
     setShowPassword2((prevShowPassword) => !prevShowPassword);
   };
+
+  console.log("signInResult:", signInResult);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -92,7 +94,6 @@ const Auth = () => {
       openFunction();
     } else {
       const info = await signIn(formData);
-      console.log("info:", info);
       if (info.error) {
         if (info.error.data.message === "User doesn't exist") {
           setNoUserError(true);
@@ -120,7 +121,6 @@ const Auth = () => {
           result: data.result,
         })
       );
-
       dispatch(setLogin(true));
       navigate(redirect);
     }
