@@ -289,10 +289,10 @@ const Auth = () => {
               {lang === "en"
                 ? isSignup
                   ? "Sign Up"
-                  : "Log In"
+                  : "We are loggin in..."
                 : isSignup
                 ? "회원가입"
-                : "로그인"}
+                : "로그인 중입니다..."}
             </Typography>
             <Paper elevation={0} className={classes.loadingPaper}>
               <CircularProgress size="7em" />
