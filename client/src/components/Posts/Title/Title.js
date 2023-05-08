@@ -32,7 +32,7 @@ const Title = ({ searchResult, lang, searchTerm }) => {
             <img
               src={Nothing}
               alt="typing"
-              height="400px"
+              // height="400px"
               className={classes.img}
             />
           </Grid>
