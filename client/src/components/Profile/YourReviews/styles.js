@@ -18,8 +18,11 @@ export default makeStyles((theme) => ({
     borderRadius: 20,
   },
   img: {
-    [theme.breakpoints.down(650)]: {
-      height: 250,
+    [theme.breakpoints.up("xs")]: {
+      height: 200,
+    },
+    [theme.breakpoints.up("sm")]: {
+      height: 400,
     },
   },
   loadingPaper: {

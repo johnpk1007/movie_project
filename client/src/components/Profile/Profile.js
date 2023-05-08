@@ -86,8 +86,8 @@ export default function Profile() {
         sx={{
           borderRight: 1,
           borderColor: "white",
-          minWidth: 150,
-          width: 150,
+          // minWidth: 150,
+          width: { xs: 90, sm: 150 },
         }}
       >
         <Tab label={lang === "en" ? "Review" : "리뷰"} {...a11yProps(0)} />
