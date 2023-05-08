@@ -29,12 +29,7 @@ const Title = ({ searchResult, lang, searchTerm }) => {
           alignItems="center"
         >
           <Grid item xs>
-            <img
-              src={Nothing}
-              alt="typing"
-              // height="400px"
-              className={classes.img}
-            />
+            <img src={Nothing} alt="typing" className={classes.img} />
           </Grid>
           <Grid item>
             <Typography
