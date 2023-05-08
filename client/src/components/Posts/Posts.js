@@ -142,9 +142,8 @@ const Posts = () => {
           sx={{
             borderRight: 1,
             borderColor: "white",
-            minWidth: 150,
-            width: 150,
-            // float: "left",
+            // minWidth: 150,
+            width: { xs: 90, sm: 150 },
           }}
         >
           <Tab label={lang === "en" ? "Title" : "제목"} {...a11yProps(0)} />

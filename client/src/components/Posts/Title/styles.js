@@ -2,8 +2,14 @@ import { makeStyles } from "@material-ui/core/styles";
 
 export default makeStyles((theme) => ({
   img: {
-    [theme.breakpoints.down(650)]: {
-      height: 250,
+    // [theme.breakpoints.down(650)]: {
+    //   height: 250,
+    // },
+    [theme.breakpoints.up("xs")]: {
+      height: 200,
+    },
+    [theme.breakpoints.up("sm")]: {
+      height: 400,
     },
   },
   loadingPaper: {

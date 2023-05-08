@@ -161,7 +161,6 @@ const Navbar = () => {
               fontWeight="fontWeightLight"
               sx={{
                 fontSize: { xs: 20, sm: 30 },
-                backgroundColor: { xs: "red", sm: "blue" },
               }}
             >
               FilmView
