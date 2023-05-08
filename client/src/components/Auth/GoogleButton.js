@@ -29,8 +29,9 @@ const GoogleButton = ({ isSignup, lang, redirect }) => {
           backgroundColor: "#4285f4",
           color: "white",
           height: 36.5,
-          fontSize: lang === "en" ? "12px" : null,
-          // width: "47%",
+          fontSize: lang === "en" ? "13px" : "13px",
+          paddingRight: 0,
+          paddingLeft: 0,
         }}
         fullWidth
         startIcon={<Icon />}

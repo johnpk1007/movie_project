@@ -27,11 +27,13 @@ const NaverButton = ({ isSignup, lang, redirect }) => {
         startIcon={<NaverIcon />}
         style={{
           backgroundColor: "#03C75A",
-          color: "white",
+          // color: "white",
+          color: { xs: "red", sm: "blue" },
           height: 36.5,
           marginBottom: 10,
-
-          fontSize: lang === "en" ? "13px" : null,
+          fontSize: lang === "en" ? "13px" : "13px",
+          paddingLeft: 0,
+          paddingRight: 0,
         }}
       >
         {lang === "en"
