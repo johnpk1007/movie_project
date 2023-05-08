@@ -107,7 +107,7 @@ export const logout = async (req, res) => {
 };
 
 export const passwordchange = async (req, res) => {
-  const { email, password, confirmPassword, name } = req.body;
+  const { email, src, password, confirmPassword, name } = req.body;
   try {
     if (password !== confirmPassword)
       return res.status(400).json({ message: "Password don't match" });
@@ -115,14 +115,12 @@ export const passwordchange = async (req, res) => {
     const result = await User.findOneAndUpdate(
       {
         email: email,
+        src: "local",
       },
       { password: hashedPassword }
     );
 
-    const token = jwt.sign({ email: result.email, id: result._id }, "test", {
-      expiresIn: "1hr",
-    });
-    res.status(200).json({ result, token });
+    res.status(200).json({ result });
   } catch (error) {
     res.status(500).json({ message: "Something went wrong" });
   }

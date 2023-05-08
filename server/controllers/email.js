@@ -22,7 +22,7 @@ export const sendDeleteEmail = async (req, res) => {
   try {
     const msg = {
       to: email, // Change to your recipient
-      from: "johnpk1007@gmail.com", // Change to your verified sender
+      from: "noreply@filmview.xyz", // Change to your verified sender
       template_id:
         lang === "en"
           ? process.env.SENDGRID_TEMPLATE_ID_DELETE_ENGLISH
