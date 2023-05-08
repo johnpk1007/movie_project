@@ -1,22 +1,19 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { blue, deepPurple, lightBlue } from "@material-ui/core/colors";
 
 export default makeStyles((theme) => ({
   appBar: {
     margin: "0 0 12px 0",
     display: "flex",
-    padding: "0 10px",
+    // padding: "0 10px",
     borderBottom: "1px solid #ededed",
-    // alignItems: "center",
-    // flexDirection: "column",
-    // borderRadius: "5px",
-    // justifyContent: "space-between",
-    // padding: "10px 50px",
-    // backgroundColor: "white",
-    // height: 40,
-    // border: 1,
+    [theme.breakpoints.up("xs")]: {
+      padding: "0 0px",
+    },
+    [theme.breakpoints.up(400)]: {
+      padding: "0 5%",
+    },
     [theme.breakpoints.up("md")]: {
-      padding: "0 100px",
+      padding: "0 10%",
     },
     [theme.breakpoints.up("lg")]: {
       padding: "0 15%",
@@ -29,14 +26,21 @@ export default makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     flexDirection: "row",
+    padding: "0 0px",
   },
   heading: {
     color: "rgba(0,183,255, 1)",
     textDecoration: "none",
   },
-  image: {
-    marginLeft: "15px",
+  img: {
+    [theme.breakpoints.up("xs")]: {
+      height: "22px",
+    },
+    [theme.breakpoints.up("sm")]: {
+      height: "30px",
+    },
   },
+
   profileWithoutUser: {
     // width: 150,
     minWidth: 150,
@@ -62,10 +66,7 @@ export default makeStyles((theme) => ({
     fontSize: 30,
     color: "black",
   },
-  purple: {
-    // color: theme.palette.getContrastText(deepPurple[500]),
-    backgroundColor: deepPurple[500],
-  },
+
   button: {
     borderRadius: 20,
     minWidth: 100,

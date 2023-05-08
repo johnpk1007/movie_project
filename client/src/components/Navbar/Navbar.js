@@ -153,10 +153,17 @@ const Navbar = () => {
             <img
               src={reviewIcon5}
               alt="typing"
-              height="30px"
-              // className={classes.img}
+              // height="30px"
+              className={classes.img}
             />
-            <Typography fontWeight="fontWeightLight" sx={{ fontSize: 30 }}>
+            <Typography
+              // className={classes.typo}
+              fontWeight="fontWeightLight"
+              sx={{
+                fontSize: { xs: 20, sm: 30 },
+                backgroundColor: { xs: "red", sm: "blue" },
+              }}
+            >
               FilmView
             </Typography>
           </Link>
@@ -188,7 +195,11 @@ const Navbar = () => {
         <div>
           {user ? (
             <Avatar
-              sx={{ bgcolor: "#1976D2" }}
+              sx={{
+                bgcolor: "#1976D2",
+                width: { xs: 40, sm: 50 },
+                height: { xs: 40, sm: 50 },
+              }}
               alt={user?.result?.name || user?.name}
               src={user?.result?.imageUrl || user?.imageUrl}
               aria-controls={open ? "basic-menu" : undefined}
@@ -210,7 +221,9 @@ const Navbar = () => {
                 handleClick(e);
               }}
             >
-              <AccountCircleIcon sx={{ width: 50, height: 50 }} />
+              <AccountCircleIcon
+                sx={{ width: { xs: 40, sm: 50 }, height: { xs: 40, sm: 50 } }}
+              />
             </IconButton>
           )}
 
