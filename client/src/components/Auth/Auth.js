@@ -259,14 +259,14 @@ const Auth = () => {
 
               <Grid container justifyContent="center">
                 <Grid item>
-                  <Button onClick={switchMode}>
+                  <Button onClick={switchMode} sx={{ fontSize: 13 }}>
                     {lang === "en"
                       ? isSignup
                         ? "Already have an account? Log In!"
                         : "Don't have an account? Sign Up!"
                       : isSignup
                       ? "이미 회원가입하셨나요? 로그인 하세요. "
-                      : "아직 회원가입하지 않으셨나요? 지금 가입하세요."}
+                      : "아직 회원가입하지 않으셨나요? 지금 가입하세요"}
                   </Button>
                 </Grid>
               </Grid>
