@@ -8,6 +8,7 @@ import YourReviews from "./YourReviews/YourReviews";
 import { Grid } from "@mui/material";
 import DeleteAccount from "./DeleteAccount/DeleteAccount";
 import NewIdPassword from "./NewIdPassword/NewIdPassword";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 import { useParams } from "react-router-dom";
 
@@ -60,6 +61,8 @@ export default function Profile() {
 
   const { lang } = useParams();
 
+  const smallScreen = useMediaQuery("(max-width: 600px)");
+
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("profile")).result.src === "local") {
       setMovieLogin(true);
@@ -70,24 +73,29 @@ export default function Profile() {
     <Box
       sx={{
         // flexGrow: 1,
-        bgcolor: "background.paper",
+        // bgcolor: "background.paper",
         display: "flex",
-        direction: "row",
-        justifyContent: "flex-start",
-        height: 200,
+        // direction: "row",
+        // flexDirection: "column",
+        flexDirection: { xs: "column", sm: "row" },
+        // justifyContent: "flex-start",
+        // justifyContent: "center",
+        alignItems: { xs: "center", sm: "flex-start" },
+        height: 400,
       }}
     >
       <Tabs
-        orientation="vertical"
-        variant="scrollable"
+        orientation={smallScreen ? "horizontal" : "vertical"}
+        // variant="scrollable"
+        variant="fullWidth"
         value={value}
         onChange={handleChange}
         aria-label="Vertical tabs example"
         sx={{
           borderRight: 1,
           borderColor: "white",
-          // minWidth: 150,
-          width: { xs: 90, sm: 150 },
+          minWidth: 150,
+          width: { xs: 300, sm: 150 },
         }}
       >
         <Tab label={lang === "en" ? "Review" : "리뷰"} {...a11yProps(0)} />

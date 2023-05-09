@@ -19,7 +19,7 @@ export default makeStyles((theme) => ({
   },
   img: {
     [theme.breakpoints.up("xs")]: {
-      height: 200,
+      height: 250,
     },
     [theme.breakpoints.up("sm")]: {
       height: 400,

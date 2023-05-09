@@ -6,7 +6,7 @@ export default makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    padding: theme.spacing(2),
+    padding: theme.spacing(0),
   },
   root: {
     "& .MuiTextField-root": {
