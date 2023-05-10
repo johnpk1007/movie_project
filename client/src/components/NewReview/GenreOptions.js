@@ -48,7 +48,7 @@ export default function ComboBox({
   }, [preOption]);
   return (
     <Autocomplete
-      fullWidth
+      sx={{ width: "100%", paddingRight: 2 }}
       disablePortal
       id="combo-box-demo"
       options={lang === "en" ? genreOptionsEn : genreOptionsKo}
@@ -57,7 +57,7 @@ export default function ComboBox({
       renderInput={(params) => (
         <TextField
           {...params}
-          sx={{ width: 348 }}
+          // sx={{ width: "100%" }}
           label={lang === "en" ? "Genre" : "장르"}
           error={noTagError}
           helperText={

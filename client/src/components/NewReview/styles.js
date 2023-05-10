@@ -12,11 +12,13 @@ export default makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     padding: theme.spacing(2),
+    // width: 500,
   },
   form: {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center",
+    width: "100%",
   },
   fileInput: {
     width: "97%",

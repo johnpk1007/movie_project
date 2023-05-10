@@ -77,40 +77,40 @@ function StyledDropzone({ picture, setPostData, postData, lang }) {
 
   if (picture) {
     return (
-      <div className="container">
-        <div {...getRootProps({ style })}>
-          <input {...getInputProps()} />
+      // <div className="container">
+      <div {...getRootProps({ style })}>
+        <input {...getInputProps()} />
 
-          <div style={{ position: "relative" }}>
-            <CardMedia image={picture} className={classes.media} />
-            <div className={classes.overlay}>
-              <Typography variant="subtitle1">
-                {lang === "en"
-                  ? "If you want to change the image, drag 'n' drop some files here, or click to select files"
-                  : "이미지를 바꾸고 싶다면 이미지 파일을 마우스로 끌어오거나 창을 클릭하여 이미지 파일을 선택하세요."}
-              </Typography>
-            </div>
-            <div className={classes.overlay2}>
-              <IconButton onClick={(e) => closeButton(e)}>
-                <CloseIcon sx={{ color: "white" }} />
-              </IconButton>
-            </div>
+        <div style={{ position: "relative" }}>
+          <CardMedia image={picture} className={classes.media} />
+          <div className={classes.overlay}>
+            <Typography variant="subtitle1">
+              {lang === "en"
+                ? "If you want to change the image, drag 'n' drop some files here, or click to select files"
+                : "이미지를 바꾸고 싶다면 이미지 파일을 마우스로 끌어오거나 창을 클릭하여 이미지 파일을 선택하세요."}
+            </Typography>
+          </div>
+          <div className={classes.overlay2}>
+            <IconButton onClick={(e) => closeButton(e)}>
+              <CloseIcon sx={{ color: "white" }} />
+            </IconButton>
           </div>
         </div>
       </div>
+      // </div>
     );
   } else
     return (
-      <div className="container">
-        <div {...getRootProps({ style })}>
-          <input {...getInputProps()} />
-          <Typography variant="subtitle1">
-            {lang === "en"
-              ? "Drag 'n' drop some files here, or click to select files"
-              : "이미지 파일을 마우스로 끌어오거나 창을 클릭하여 이미지 파일을 선택하세요."}
-          </Typography>
-        </div>
+      // <div className="container">
+      <div {...getRootProps({ style })}>
+        <input {...getInputProps()} />
+        <Typography variant="subtitle1">
+          {lang === "en"
+            ? "Drag 'n' drop some files here, or click to select files"
+            : "이미지 파일을 마우스로 끌어오거나 창을 클릭하여 이미지 파일을 선택하세요."}
+        </Typography>
       </div>
+      // </div>
     );
 }
 export default StyledDropzone;
