@@ -12,11 +12,7 @@
   <img width="200" alt="image" src="./client/src/images/reviewIcon5.png">
 </div>
 <div align="center">
-  <picture>
- <source media="(prefers-color-scheme: dark)" srcset="./public/images/shimpyoTitle_transparent.png">
- <source media="(prefers-color-scheme: light)" srcset="./public/images/shimpyoTitle.png">
-<img width="150" alt="title" src="./public/images/shimpyoTitle.png">
-</picture>
+FilmView
 </div>
 <br></br>
   
