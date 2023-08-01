@@ -10,9 +10,10 @@
 
 <div align="center">
   <img width="200" alt="image" src="./client/src/images/reviewIcon5.png">
+  <span style="font-size: 18px;">이 글자는 18px 크기로 표시됩니다.</span>
 </div>
 <div align="center">
-#### FilmView
+FilmView
 </div>
 <br></br>
   
