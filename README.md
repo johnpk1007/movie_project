@@ -12,7 +12,7 @@
   <img width="200" alt="image" src="./client/src/images/reviewIcon5.png">
 </div>
 <div align="center">
-<h1>FilmView.</h1>
+<h3>FilmView</h3>
 </div>
 <br></br>
   
