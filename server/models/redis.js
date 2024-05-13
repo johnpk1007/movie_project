@@ -22,8 +22,8 @@ const redisEndpoint = process.env.REDIS_ENDPOINT;
 
 const redisClient = createClient({
   socket: {
-    host: "redis-19603.c302.asia-northeast1-1.gce.cloud.redislabs.com",
-    port: 19603,
+    host: "redis-10782.c14.us-east-1-2.ec2.redns.redis-cloud.com",
+    port: 10782,
     connectTimeout: 50000,
   },
   username: redisUsername,
