@@ -17,7 +17,7 @@
   
 #### FilmView는 영화 리뷰를 직접 등록하고 다른 사람들과 공유하며 댓글을 작성할 수 있는 영화 리뷰 서비스입니다.
 
-### [FilmView 바로가기](https://filmview.netlify.app/)
+### [FilmView 바로가기](https://filmview.xyz/)
 
 <br/>
 
